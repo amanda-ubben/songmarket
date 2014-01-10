@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	background-color:#cee66e;	
+}
+
+article{
+	background-color:#57585a;
+	margin: 300px 200px 300px 200px;
+	padding:50px;
+}
+
+section{
+	background-color:#fff;
+	padding:25px;
+	margin:15px;	
+}
+
