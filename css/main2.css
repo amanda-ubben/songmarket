@@ -5,9 +5,9 @@ body{
 }
 
 article{
-	background:url(../img/debut_dark/debut_dark.png);
+	background:url(../../songmarket/img/debut_dark/debut_dark.png);
 	margin: 300px 200px 300px 200px;
-	padding:50px;
+	padding:500px;
 }
 
 section{
