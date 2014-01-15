@@ -2,6 +2,7 @@
 /* CSS Document */
 body{
 	background-color:#cee66e;	
+	font-family:Arial, Helvetica, sans-serif;
 }
 
 article{
@@ -14,4 +15,42 @@ section{
 	background-color:#fff;
 	padding:25px;
 	margin:15px;	
+}
+
+#logo{
+	height:134px;
+	width:515px;
+	background-color:#57585a;	
+}
+header{
+	background-color:#57585a;
+	background-size:250px 520px;
+	min-height:150px;
+}
+#mainNav{
+	display:inline;
+	position:absolute;
+		
+}
+#mainNav li{
+	display:inline;	
+	border: solid 5px #404040;
+	font-size:24px;
+	margin-left:20px;
+	padding:5px;
+}
+#mainNav a{
+	text-decoration:none;
+	color:#FFF;	
+}
+ul{
+	list-style-type:none;	
+	margin-top:65px;
+	heigth:134px;
+}
+form{
+	display:inline;
+	position:absolute;
+	top:74px;
+	left:1200px;	
 }
