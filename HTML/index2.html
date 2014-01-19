@@ -10,7 +10,7 @@
 	<div id="head">
 	<header>
         <img id="logo" alt="The Song Market" src="../img/The_Song_Market_finished_logo_ (1).JPG" />
-	<nav id="mainNav">
+	<!--/*<nav id="mainNav">
 		<ul>
     		<li><a href="#">Home</a></li>
         	<li><a href="#">Portfolio</a></li>
@@ -18,11 +18,18 @@
         	<li><a href="#">Rankings</a></li>
         	<li><a href="#">Charts</a></li>
     	</ul>
-	</nav>
-    <form>
-    	<input type="text" name="Search" value="Search Artists and Songs" />
-        <input type="submit" name="Go" />
-    </form>
+	</nav>*/-->
+    <div id="tfheader">
+		<form id="tfnewsearch" method="get" action="http://www.google.com">
+		        <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+		</form>
+	<div class="tfclear"></div>
+	</div>
+    <div id="login">
+    	<form id="cred">
+        	<input type="text" class="loginput" name="user" size="10" maxlength="20" value="Username"/><input type="text" class="loginput" name="pass" size="10" maxlength="15" value="Password"/><input type="submit" value="Log in" class="loginbtn"/>
+        </form>
+     </div>
    </header>
   </div>
 	<article id=test>

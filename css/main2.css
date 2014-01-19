@@ -3,6 +3,7 @@
 body{
 	background-color:#cee66e;	
 	font-family:Arial, Helvetica, sans-serif;
+	margin-top:10px;
 }
 
 article{
@@ -26,6 +27,7 @@ header{
 	background-color:#57585a;
 	background-size:250px 520px;
 	min-height:150px;
+	margin:0px;
 }
 #mainNav{
 	display:inline;
@@ -48,9 +50,95 @@ ul{
 	margin-top:65px;
 	heigth:134px;
 }
-form{
-	display:inline;
-	position:absolute;
-	top:74px;
-	left:1200px;	
-}
+#tfheader{
+		background-color:#57585a;
+	}
+	#tfnewsearch{
+		position:absolute;
+		padding:20px;
+		left:600px;
+		top:25px;
+	}
+	.tftextinput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:50px;
+		border:1px solid #404040; border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	.tfbutton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:50px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #404040; border-right:0px;
+		background-color: #cee66e;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton:hover {
+		text-decoration: none;
+		background: #404040;
+		border: solid 1px #cee66e;
+
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner {
+	  border: 0;
+	}
+	.tfclear{
+		clear:both;
+	}
+#login{
+		background-color:#57585a;
+	}
+	#cred{
+		position:absolute;
+		padding:20px;
+		left:1500px;
+		top:40px;
+	}
+	.loginput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:25px;
+		border:3px solid #404040;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	.loginbtn {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:25px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #404040; border-right:0px;
+		background-color: #cee66e;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.loginbtn:hover {
+		text-decoration: none;
+		background: #404040;
+		border: solid 1px #cee66e;
+
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner {
+	  border: 0;
+	}
+	.tfclear{
+		clear:both;
+	}
