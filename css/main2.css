@@ -5,17 +5,62 @@ body{
 	font-family:Arial, Helvetica, sans-serif;
 	margin-top:10px;
 }
-
+#sidebar{
+	background-color:#57585a;
+	float:right;
+	width:535px;
+	margin-top:25px;
+	margin-right:10px;	
+}
+#sidebar iframe{
+	margin-left:15px;
+	margin-top:15px;	
+	border:solid 5px #cee66e;
+}
+#Snav ul{
+	margin-top:5px;
+	border-top:ridge 10px #404040;
+	padding:5px;
+		
+}
+#Snav li{
+	display:inline;	
+	font-size:20px;
+	padding:10px;
+	margin-top:10px;
+}
+#Snav a{
+	text-decoration:none;
+	color:#FFF;	
+}
 article{
 	background:url(../../songmarket/img/debut_dark/debut_dark.png);
-	margin: 300px 200px 300px 200px;
-	padding:500px;
+	margin: 25px 15px 15px 0px;
+	padding:25px;
+	width:1500px;
 }
 
 section{
 	background-color:#fff;
+	border:solid 5px #cee66e;
 	padding:25px;
 	margin:15px;	
+}
+table{
+	border-collapse:collapse;
+	width:auto;
+	height:100px;
+}
+table,th, td{
+	border: 3px solid #404040;
+	font-size:20px;
+}
+td{
+	padding:20px;	
+}
+.crowdList td{
+	border-top:none;
+	border-bottom:none;	
 }
 
 #logo{
@@ -102,7 +147,7 @@ ul{
 	#cred{
 		position:absolute;
 		padding:20px;
-		left:1500px;
+		left:1425px;
 		top:40px;
 	}
 	.loginput{
@@ -130,6 +175,27 @@ ul{
 		border-bottom-right-radius: 5px 5px;
 	}
 	.loginbtn:hover {
+		text-decoration: none;
+		background: #404040;
+		border: solid 1px #cee66e;
+
+	}
+	.signupbtn{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:25px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #404040; border-right:0px;
+		background-color: #cee66e;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.signinbtn:hover {
 		text-decoration: none;
 		background: #404040;
 		border: solid 1px #cee66e;
