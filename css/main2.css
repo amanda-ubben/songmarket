@@ -50,7 +50,7 @@ article{
 	background:url(../img/debut_dark/debut_dark.png);
 	margin: 25px 15px 15px 0px;
 	padding:25px;
-	width:1500px;
+	width:auto;
 }
 
 section{
@@ -77,13 +77,13 @@ td{
 }
 
 #logo{
-	height:134px;
-	width:515px;
+	height:35%;
+	width:35%;
 	background-color:#57585a;	
 }
 header{
 	background-color:#57585a;
-	background-size:250px 520px;
+	background-size:100% 100%;
 	min-height:150px;
 	margin:0px;
 }
@@ -142,8 +142,9 @@ ul{
 	width:400px;	
 }
 .textbox{
-	height:150px;
-	width:390px;
+	height:auto;
+	width:26%;
+	margin:0px 15px 10px 25px;
 	position:absolute;
 	top:920px;
 	font-size:25px;	
