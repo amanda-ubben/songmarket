@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /* CSS Document */
+#wrapper{
+	width:1080px;
+	margin-left:13%;	
+}
 body{
 	/*background-color:#cee66e;*/
 	background-color:#fff;	
@@ -7,8 +11,8 @@ body{
 	margin-top:10px;
 }
 h1{
-	font-size:30px;	
-	padding:2px;
+	font-size:28px;	
+	padding-top:0px;
 }
 h2{
 	font-size:25px;	
@@ -16,12 +20,14 @@ h2{
 	padding:2px;
 }
 #welcome{
-	border:5px solid #404040;	
+	border:5px solid #404040;
+	width:auto;	
+	
 }
 #sidebar{
 	background-color:#57585a;
 	float:right;
-	width:535px;
+	width:30%;
 	margin-top:25px;
 	margin-right:10px;	
 }
@@ -77,8 +83,9 @@ td{
 }
 
 #logo{
-	height:35%;
-	width:35%;
+	height:40%;
+	width:40%;
+	margin-top:2%;
 	background-color:#57585a;	
 }
 header{
@@ -86,6 +93,7 @@ header{
 	background-size:100% 100%;
 	min-height:150px;
 	margin:0px;
+	width:100%;
 }
 #mainNav{
 	display:inline;
@@ -106,60 +114,70 @@ header{
 ul{
 	list-style-type:none;	
 	margin-top:65px;
-	heigth:134px;
 }
+#images{
+	display: flex;
+	align-items:center;	
+	margin-left:1.5%;
+	height:inherit;
+}
+#text{
+	display: flex;
+	align-items:flex-start;	
+	top:900px;
+	font-size:20px;
+}
+
 #crowd{
-	position:absolute;	
-	left:20px;
-	height:400px;
-	width:400px;
+	height:auto;
+	width:auto;
 	border: 5px solid #cee66e;
 }
 #crowd img{
-	height:400px;
-	width:400px;	
+	height:same-as-width;
+	width:95%;
+	align:center;
+	padding-left:5px;	
 }
 #arrow{
-	position:absolute;	
-	left: 485px;
-	height:400px;
-	width:400px;
+	height:auto;
+	width:auto;
 	border: 5px solid #cee66e;
+
 }
 #arrow img{
-	height:400px;
-	width:400px;	
+	height:same-as-width;
+	width:95%;
+	align:center;
+	padding-left:5px;
 }
 #trophy{
-	position:absolute;	
-	left: 950px;
-	height:400px;
-	width:400px;
+	height:auto;
+	width:auto;
 	border: 5px solid #cee66e;
 }
 #trophy img{
-	height:400px;
-	width:400px;	
+	height:same-as-width;
+	width:95%;
+	align:center;
+	padding-left:5px;	
 }
 .textbox{
-	height:auto;
-	width:26%;
-	margin:0px 15px 10px 25px;
-	position:absolute;
-	top:920px;
-	font-size:25px;	
+	height:50%;
+	width:95%;
 	border:5px solid #404040;
 }
 p{
 	padding:0px;
 	margin:0px;	
 }
-#gameinfo{
-	left:475px;	
-}
 #winninginfo{
-	left:940px;	
+	height:92px;	
 }
+#crowdinfo{
+	height:92px;	
+}
+
 #tfheader{
 		background-color:#57585a;
 	}
@@ -273,3 +291,8 @@ p{
 	.tfclear{
 		clear:both;
 	}
+footer{
+	border-top:5px solid #404040;
+	text-align:center;
+	padding:3px;	
+}
