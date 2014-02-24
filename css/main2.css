@@ -27,14 +27,16 @@ h2{
 #sidebar{
 	background-color:#57585a;
 	float:right;
-	width:30%;
-	margin-top:25px;
-	margin-right:10px;	
+	width:25%;
+	margin-top:2.5%;
+	height:100%;
+	
 }
 #sidebar iframe{
-	margin-left:15px;
-	margin-top:15px;	
+	margin-left:3%;
+	margin-top:3%;	
 	border:solid 5px #cee66e;
+	width:90%;
 }
 #Snav ul{
 	margin-top:5px;
@@ -44,8 +46,8 @@ h2{
 }
 #Snav li{
 	display:inline;	
-	font-size:20px;
-	padding:10px;
+	font-size:16px;
+	padding:1.5%;
 	margin-top:10px;
 }
 #Snav a{
@@ -53,7 +55,7 @@ h2{
 	color:#FFF;	
 }
 article{
-	background:url(../img/debut_dark/debut_dark.png);
+	background:url(../img/layout/debut_dark.png);
 	margin: 25px 15px 15px 0px;
 	padding:25px;
 	width:auto;
@@ -110,6 +112,17 @@ header{
 #mainNav a{
 	text-decoration:none;
 	color:#FFF;	
+}
+#rank{
+	border:#404040 solid 2px;	
+}
+#rank li{
+	border:#404040 solid 1px;
+	border-collapse:collapse;	
+}
+#messages p{
+	border:#404040 solid 2px;
+	border-collapse:collapse;	
 }
 ul{
 	list-style-type:none;	
@@ -177,6 +190,9 @@ p{
 #crowdinfo{
 	height:92px;	
 }
+#mainContent{
+	width:70%;	
+}
 
 #tfheader{
 		background-color:#57585a;
@@ -184,14 +200,14 @@ p{
 	#tfnewsearch{
 		position:absolute;
 		padding:20px;
-		left:600px;
-		top:25px;
+		left:550px;
+		top:50px;
 	}
 	.tftextinput{
 		margin: 0;
 		padding: 5px 15px;
 		font-family: Arial, Helvetica, sans-serif;
-		font-size:50px;
+		font-size:18px;
 		border:1px solid #404040; border-right:0px;
 		border-top-left-radius: 5px 5px;
 		border-bottom-left-radius: 5px 5px;
@@ -200,7 +216,7 @@ p{
 		margin: 0;
 		padding: 5px 15px;
 		font-family: Arial, Helvetica, sans-serif;
-		font-size:50px;
+		font-size:18px;
 		outline: none;
 		cursor: pointer;
 		text-align: center;
@@ -229,24 +245,38 @@ p{
 	}
 	#cred{
 		position:absolute;
-		padding:20px;
-		left:1425px;
-		top:40px;
+		left:65%;
+		top:60px;
 	}
-	.loginput{
+	#userinput{
+		margin: 0;
+		position:absolute;
+		top:20px;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:16px;
+		border:3px solid #404040;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	#passinput{
+		position:absolute;
+		top:90px;
 		margin: 0;
 		padding: 5px 15px;
 		font-family: Arial, Helvetica, sans-serif;
-		font-size:25px;
+		font-size:16px;
 		border:3px solid #404040;
 		border-top-left-radius: 5px 5px;
 		border-bottom-left-radius: 5px 5px;
 	}
 	.loginbtn {
+		position:absolute;
+		top:2px;
 		margin: 0;
-		padding: 5px 15px;
+		padding: 3px;
 		font-family: Arial, Helvetica, sans-serif;
-		font-size:25px;
+		font-size:12px;
 		outline: none;
 		cursor: pointer;
 		text-align: center;
@@ -264,10 +294,12 @@ p{
 
 	}
 	.signupbtn{
+		position:absolute;
 		margin: 0;
-		padding: 5px 15px;
+		top:25px;
+		padding: 3px;
 		font-family: Arial, Helvetica, sans-serif;
-		font-size:25px;
+		font-size:12px;
 		outline: none;
 		cursor: pointer;
 		text-align: center;

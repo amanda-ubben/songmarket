@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome to The Song Market</title>
+<title>Sign Up</title>
 <link rel="stylesheet" href="css/main2.css" />
 </head>
 
@@ -10,7 +10,7 @@
 	<div id='wrapper'>
 	<div id="head">
 	<header>
-        <img id="logo" alt="The Song Market" src="img/layout/TSMLogo.JPG" />
+        <img id="logo" alt="The Song Market" src="img/TSMLogo.JPG" />
 	<!--/*<nav id="mainNav">
 		<ul>
     		<li><a href="#">Home</a></li>
@@ -28,9 +28,13 @@
 	<div class="tfclear"></div>
 	</div>
     <div id="login">
-    	<form id="cred">
-        	<input type="text" class="loginput" name="user" size="10" maxlength="20" value="Username"/><br /><input type="text" class="loginput" name="pass" size="10" maxlength="15" value="Password"/><input type="submit" value="Log in" class="loginbtn"/><input type="submit" value="Sign up" class="signupbtn"/>
+    	<?php
+         echo <<<_END
+    	<form id="cred" method="post" action="formtest.php">
+        	<input type="text" class="loginput" name="user" size="10" maxlength="20" value="Username"/><input type="text" class="loginput" name="pass" size="10" maxlength="15" value="Password"/><input type="submit" value="Log in" class="loginbtn"/><input type="submit" value="Sign up" class="signupbtn"/>
         </form>
+        _END;
+        ?>
      </div>
    </header>
    </div>
@@ -41,13 +45,13 @@
     </section>
     <div id='images'>
     <article id="crowd">
-    	<img alt="crowds" src="img/content/crowd.png" />
+    	<img alt="crowds" src="img/crowd.png" />
      </article>
       <article id="arrow">
-        <img  alt="stock arrow" src="img/content/arrow.png" />
+        <img  alt="stock arrow" src="img/arrow.png" />
        </article>
        <article id="trophy">
-         <img  alt="trophy" src="img/content/trophy.png" />
+         <img  alt="trophy" src="img/trophy.png" />
     </article>
     </div>
     <div id='text'>
@@ -68,5 +72,6 @@
 </footer> 
 </body>
 </html>
+
 
 

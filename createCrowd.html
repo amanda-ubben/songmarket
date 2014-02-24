@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Create Crowd</title>
+<link rel="stylesheet" href="css/main2.css" />
+</head>
+
+<body>
+<div id='wrapper'>
+	<div id="head">
+	<header>
+        <img id="logo" alt="The Song Market" src="img/layout/TSMLogo.JPG" />
+	<!--/*<nav id="mainNav">
+		<ul>
+    		<li><a href="#">Home</a></li>
+        	<li><a href="#">Portfolio</a></li>
+        	<li><a href="#">Crowds</a></li>
+        	<li><a href="#">Rankings</a></li>
+        	<li><a href="#">Charts</a></li>
+    	</ul>
+	</nav>*/-->
+    <div id="tfheader">
+		<form id="tfnewsearch" method="get" action="http://www.google.com">
+		        <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+		</form>
+	<div class="tfclear"></div>
+	</div>
+    </header>
+    </div>
+    <div id="sidebar">
+   		<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3ZgmfR6lsnCwdffZUan8EA" height="80" frameborder="0" allowtransparency="true"></iframe>
+        <div id="Snav">
+        	<ul>
+            	<li><a href="portfolio.html">My Portfolio</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="newsFeed.html">News Feed</a></li>
+            </ul>
+         </div>
+         </div>
+    <article id="mainContent">
+
+     <section>
+		<h2>Create a Crowd</h2>
+		<div id="crowdForm">
+        	<form>
+				Crowd Name: <input type="text" name="crowdname"><br />
+				Crowd Bio: <TEXTAREA NAME="SpecialRequest" ROWS="3" COLS="25"></TEXTAREA><br />
+                Priavacy Settings:<input type="radio" name="privSet" value="public">Public<input type="radio" name="privSet" value="private">Private<br />
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        </section>
+        </article>
+    </div>
+</body>
+</html>

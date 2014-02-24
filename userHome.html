@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="../css/main2.css" />
+<link rel="stylesheet" href="css/main2.css" />
 <title>user home</title>
 </head>
 
 <body>
+	<div id='wrapper'>
 	<div id="head">
 	<header>
-        <img id="logo" alt="The Song Market" src="../img/The_Song_Market_finished_logo_ (1).JPG" />
+        <img id="logo" alt="The Song Market" src="img/layout/TSMLogo.JPG" />
 	<!--/*<nav id="mainNav">
 		<ul>
     		<li><a href="#">Home</a></li>
@@ -27,13 +28,13 @@
 	</div>
     <div id="login">
     	<form id="cred">
-        	<input type="text" class="loginput" name="user" size="10" maxlength="20" value="Username"/><input type="text" class="loginput" name="pass" size="10" maxlength="15" value="Password"/><input type="submit" value="Log in" class="loginbtn"/><input type="submit" value="Sign up" class="signupbtn"/>
+        	<input type="text" id="userinput" name="user" size="10" maxlength="20" value="Username"/><input type="password" id="passinput" name="pass" size="10" maxlength="15" value="Password"/><input type="submit" value="Log in" class="loginbtn"/><input type="submit" value="Sign up" class="signupbtn"/>
         </form>
      </div>
    </header>
    </div>
    <div id="sidebar">
-   		<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3ZgmfR6lsnCwdffZUan8EA" width="500" height="80" frameborder="0" allowtransparency="true"></iframe>
+   		<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3ZgmfR6lsnCwdffZUan8EA" height="80" frameborder="0" allowtransparency="true"></iframe>
         <div id="Snav">
         	<ul>
             	<li><a href="portfolio.html">My Portfolio</a></li>
@@ -42,7 +43,7 @@
             </ul>
          </div>
     </div>
-   <article>
+   <article id="mainContent">
 
      <section id="portolifo-list">
 		<h2>Your Songs</h2>
@@ -111,5 +112,6 @@
                     <p>Entry 4</p><br />
              </section>
         </article>
+        </div>
 </body>
 </html>
