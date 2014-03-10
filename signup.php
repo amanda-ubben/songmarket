@@ -11,6 +11,7 @@
 	<div id="head">
 	<header>
         <img id="logo" alt="The Song Market" src="img/TSMLogo.JPG" />
+        <img id="logo" alt="The Song Market" src="img/TSMLogo.JPG" />
 	<!--/*<nav id="mainNav">
 		<ul>
     		<li><a href="#">Home</a></li>
