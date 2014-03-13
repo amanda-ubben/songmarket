@@ -4,6 +4,9 @@
 	width:1000px;
 	margin-left:10%;	
 }
+#welcome{
+	text-align:center;	
+}
 body{
 	/*background-color:#cee66e;*/
 	background-color:#fff;	
