@@ -17,7 +17,8 @@ if (isset($_POST['user']))
 		}
 	}
 if ($loggedin) echo " $user, you are logged in.";
-echo <<<_END
+
+?>
 
 <br /><span class='main'>
   <section id='welcome'>
@@ -45,21 +46,19 @@ echo <<<_END
         </section>
         <section id='winninginfo' class='textbox'>
         <p>Accumulate the highest profit margins to win your Crowd! </p>
-    </section> 
+    </section>
   </div>
-	
+
 
 <div class="form"><center><form method='post' action='interest.php'>$error
 <div class="row"><span class='fieldname'>First Name: </span>
-<span class='formw'><input type='text' maxlength='16' name='firstName' vlaue='$firstName' /></span></div><br />
+<span class='formw'><input type='text' maxlength='16' name='firstName'/></span></div><br />
 <div class='row'><span class='fieldname'>Last Name: </span>
-<span class='formw'><input type='text' maxlength='16' name='lastName' value='$lastName' /></div><br />
+<span class='formw'><input type='text' maxlength='16' name='lastName'/></div><br />
 <div class='row'><span class='fieldname'>Email: </span>
-<span class='formw'><input type='text' maxlength='100' name='email' value='$email' /></span></div>
-<br />
+<span class='formw'><input type='text' maxlength='100' name='email'/></span></div><br />
 
-_END;
-?>
+
 
 <span class='fieldname'>&nbsp;</span>
 <div class='formw'><input type='submit' value='Sign Up' /></div>
