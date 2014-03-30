@@ -19,9 +19,9 @@ if (isset($_POST['user']))
 if ($loggedin) echo " $user, you are logged in.";
 echo <<<_END
 
-<br /><span class='main'>   </div>
+<br /><span class='main'>
   <section id='welcome'>
-	<h1>Welcome to the premier stage for showcasing your intuition for predicting music success.</h1>
+	<h1>Welcome to the premier stage for showcasing your ability to predict music success!</h1>
     <h1>Do you have what it takes to become a master song trader?</h1>
     <h2>Coming Soon!</h2>
     </section>
@@ -49,22 +49,22 @@ echo <<<_END
   </div>
 	
 
-<div class="form"><form method='post' action='interest.php'>$error
-<span class='fieldname'>First Name</span>
-<input type='text' maxlength='16' name='firstName' vlaue='$firstName' /><span id='info'></span><br />
-<span class='fieldname'>Last Name</span>
-<input type='text' maxlength='16' name='lastName' value='$lastName' /><br />
-<span class='fieldname'>Email</span>
-<input type='text' maxlength='100' name='email' value='$email' />
+<div class="form"><center><form method='post' action='interest.php'>$error
+<div class="row"><span class='fieldname'>First Name: </span>
+<span class='formw'><input type='text' maxlength='16' name='firstName' vlaue='$firstName' /></span></div><br />
+<div class='row'><span class='fieldname'>Last Name: </span>
+<span class='formw'><input type='text' maxlength='16' name='lastName' value='$lastName' /></div><br />
+<div class='row'><span class='fieldname'>Email: </span>
+<span class='formw'><input type='text' maxlength='100' name='email' value='$email' /></span></div>
 <br />
 
 _END;
 ?>
 
 <span class='fieldname'>&nbsp;</span>
-<input type='submit' value='Sign Up' />
-</form></div></div><br /> <footer>
+<div class='formw'><input type='submit' value='Sign Up' /></div>
+</form></center></div></div><br /> <footer>
   <p>Copyright 2014 by The Song Market</p>
   <p>Contact information: <a href="mailto:thesongmarket@gmail.com">
   thesongmarket@gmail.com</a>.</p>
-</footer> </body></html>
+</footer> </div></body></html>

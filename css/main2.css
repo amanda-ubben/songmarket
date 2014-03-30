@@ -326,6 +326,25 @@ p{
 	.tfclear{
 		clear:both;
 	}
+.appname{
+	color:#ffffff;
+	float:right;
+}
+.form{
+      margin:0 auto;
+      width:420px;
+}
+div.row span.fieldname {
+  float: left;
+  width: 200px;
+  text-align: right;
+  margin-top: 5px;
+  }div.row span.formw{
+  float: right;
+  width: 220px;
+  text-align: left;
+  } 
+
 footer{
 	border-top:5px solid #404040;
 	text-align:center;
