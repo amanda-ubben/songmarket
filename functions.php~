@@ -1,8 +1,8 @@
 <?php // functions.php
 $dbhost = 'localhost';
-$dbname = 'songmarket';
-$dbuser = 'smadmin';
-$dbpass = 'smtest';
+$dbname = 'php';
+$dbuser = 'root';
+$dbpass = '0817';
 $appname = 'Welcome to The Song Market';
 
 mysql_connect($dbhost, $dbuser, $dbpass) or die(mysql_error());
