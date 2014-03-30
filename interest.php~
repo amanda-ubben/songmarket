@@ -16,7 +16,7 @@ function ajaxRequest()
 	return request
 }
 </script>
-<div class='main'><h3>Thank you for signing up for launch information!</h3>
+<div class='main'><h3>Sign up for launch information!</h3>
 _END;
 
 $error = $user = $pass = "";
@@ -38,10 +38,18 @@ if (isset($_POST['user']))
 
 
 echo <<<_END
-
+<form method='post' action='interest.php'>$error
+<span class='fieldname'>First Name</span>
+<input type='text' maxlength='16' name='firstName' vlaue='$firstName' /><span id='info'></span><br />
+<span class='fieldname'>Last Name</span>
+<input type='text' maxlength='16' name='lastName' value='$lastName' /><br />
+<span class='fieldname'>Email</span>
+<input type='text' maxlength='100' name='email' value='$email' />
+<br />
 
 _END;
 ?>
 
-
-</div><br /></body></html>
+<span class='fieldname'>&nbsp;</span>
+<input type='submit' value='Sign Up' />
+</form></div><br /></body></html>
