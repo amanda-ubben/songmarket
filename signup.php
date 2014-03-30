@@ -1,78 +1,81 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Sign Up</title>
-<link rel="stylesheet" href="css/main2.css" />
-</head>
+<?php // signup.php
+include_once 'header.php';
 
-<body>
-	<div id='wrapper'>
-	<div id="head">
-	<header>
-        <img id="logo" alt="The Song Market" src="img/TSMLogo.JPG" />
-        <img id="logo" alt="The Song Market" src="img/TSMLogo.JPG" />
-	<!--/*<nav id="mainNav">
-		<ul>
-    		<li><a href="#">Home</a></li>
-        	<li><a href="#">Portfolio</a></li>
-        	<li><a href="#">Crowds</a></li>
-        	<li><a href="#">Rankings</a></li>
-        	<li><a href="#">Charts</a></li>
-    	</ul>
-	</nav>*/-->
-    
-    <div id="tfheader">
-		<form id="tfnewsearch" method="get" action="http://www.google.com">
-		        <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
-		</form>
-	<div class="tfclear"></div>
-	</div>
-    <div id="login">
-    	<?php
-         echo <<<_END
-    	<form id="cred" method="post" action="formtest.php">
-        	<input type="text" class="loginput" name="user" size="10" maxlength="20" value="Username"/><input type="text" class="loginput" name="pass" size="10" maxlength="15" value="Password"/><input type="submit" value="Log in" class="loginbtn"/><input type="submit" value="Sign up" class="signupbtn"/>
-        </form>
-        _END;
-        ?>
-     </div>
-   </header>
-   </div>
-  <section id='welcome'>
-	<h1>Welcome to the premier stage for showcasing your intuition for predicting music success.</h1>
-    <h1>Do you have what it takes to become a master song trader?</h1>
-    <h2>Coming Soon!</h2>
-    </section>
-    <div id='images'>
-    <article id="crowd">
-    	<img alt="crowds" src="img/crowd.png" />
-     </article>
-      <article id="arrow">
-        <img  alt="stock arrow" src="img/arrow.png" />
-       </article>
-       <article id="trophy">
-         <img  alt="trophy" src="img/trophy.png" />
-    </article>
-    </div>
-    <div id='text'>
-    <section id='crowdinfo' class='textbox'>
-    	<p>Compete against your friends by joining or creating a Crowd. </p>
-    </section>
-    <section id='gameinfo' class='textbox'>
-        <p>Find the next hit songs and then use the simulated currency to buy low and sell high. Profit is the goal!</p>
-        </section>
-        <section id='winninginfo' class='textbox'>
-        <p>Accumulate the highest profit margins to win your Crowd! </p>
-    </section> 
-  </div>
-  <footer>
-  <p>Copyright 2014 by The Song Market</p>
-  <p>Contact information: <a href="mailto:thesongmarket@gmail.com">
-  thesongmarket@gmail.com</a>.</p>
-</footer> 
-</body>
-</html>
+echo <<<_END
+<script>
+function checkUSER(user)
+{
+	if (user.value == '')
+	{
+		0('info').innerHTML = ''
+		return
+	}
+	
+	params = "user=" + user.value
+	request = new ajaxRequest()
+	request.open("POST", "checkuser.php", true)
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	request.setRequestHeader("Content-length", params.length)
+	request.setRequestHeader("Commection", "close")
 
+	request.onreadystatechange = function()
+	{
+		if (this.readyState == 4)
+			if (this.status == 200)
+				if (this.responseText != null)
+					0('info').innerHTML = this.responseText
+	}
 
+function ajaxRequest()
+{
+	try { var request = new XMLHttpRequest() }
+	catch(e1) {
+		try { request = new ActiveXObject("msxml2.XMLHTTP") }
+	catch(e2) {
+		try { request = new ActiveXObject("Microsoft.XMLHTTP") }
+	catch(e3) {
+		request = false
+	} } }
+	return request
+}
+</script>
+<div class='main'><h3>Please enter your details to sign up</h3>
+_END;
 
+$error = $user = $pass = "";
+if (isset($_SESSION['user'])) destroySession();
+
+if (isset($_POST['user']))
+{
+	$user = sanitizeString($_POST['user']);
+	$pass = sanitizeString($_POST['pass']);
+	if ($user =="" || $pass == "")
+		$error = "Not all fields were entered<br /><br />";
+	else
+	{
+		if (mysql_num_rows(queryMysql("SELECT * FROM members WHERE user='$user'")))
+			$error = "That username already exists<br /><br />";
+		else
+		{
+			queryMysql("INSERT INTO members VALUES('$user', '$pass')");
+			die("<h4>Account created</h4>Please log in.<br /><br />");
+		}
+	}
+}
+
+echo <<<_END
+<form method='post' action='signup.php'>$error
+<span class='fieldname'>Username</span>
+<input type='text' maxlength='16' name='user' vlaue='$user' onBlur='checkUser(this)' /><span id='info'></span><br />
+<span class='fieldname'>Password</span>
+<input type='text' maxlength='16' name='pass' value='$pass' /><br />
+<span class='fieldname'>Email</span>
+<input type='text' maxlength='100' name='email' value='$email' />
+<br />
+
+_END;
+?>
+
+<span class='fieldname'>&nbsp;</span>
+<input type='submit' value='Sign Up' />
+</form></div><br /></body></html>
