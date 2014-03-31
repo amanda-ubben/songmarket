@@ -1,7 +1,7 @@
 <?php // index.php
-include_once 'header.php';
+require_once("./include/membersite_config.php");
 $error = $firstName = $lastName = $email ="";
-if (isset($_SESSION['user'])) destroySession();
+
 
 if (isset($_POST['user']))
 {
@@ -16,8 +16,35 @@ if (isset($_POST['user']))
 			die("<h4>Thank you for you joining our interest list.</h4>Please check back soon.<br /><br />");
 		}
 	}
-if ($loggedin) echo " $user, you are logged in.";
-echo <<<_END
+// if ($loggedin) echo " $user, you are logged in.";
+
+?>
+
+<!DOCTYPE html><html><head></script>
+<title>The Song Market - Home</title>
+<link rel='stylesheet' href='css/main2.css' type='text/css' />
+</head>
+<body>
+
+<header>
+<div id='header'>
+<div class='appname'>
+<?php
+if ($fgmembersite->CheckLogin())
+{
+  echo "Welcome, " . $fgmembersite->UserFullName() . "<br/>";
+  echo "<a href='logout.php'>Logout</a></div>";
+}
+else
+{
+  echo "<a href='login.php'>Login</a><br/>";
+  echo "<a href='register.php'>Register</a><br/></div>";
+}
+?>
+
+<img id='logo' alt='The Song Market' src='img/layout/TSMLogo.JPG' />
+</div>
+</header>
 
 <br /><span class='main'>
   <section id='welcome'>
@@ -45,21 +72,19 @@ echo <<<_END
         </section>
         <section id='winninginfo' class='textbox'>
         <p>Accumulate the highest profit margins to win your Crowd! </p>
-    </section> 
+    </section>
   </div>
-	
 
-<div class="form"><center><form method='post' action='interest.php'>$error
+
+<div class="form"><center><form method='post' action='interest.php'>
 <div class="row"><span class='fieldname'>First Name: </span>
-<span class='formw'><input type='text' maxlength='16' name='firstName' value='$firstName' /></span></div><br />
+<span class='formw'><input type='text' maxlength='16' name='firstName'/></span></div><br />
 <div class='row'><span class='fieldname'>Last Name: </span>
-<span class='formw'><input type='text' maxlength='16' name='lastName' value='$lastName' /></div><br />
+<span class='formw'><input type='text' maxlength='16' name='lastName'/></div><br />
 <div class='row'><span class='fieldname'>Email: </span>
-<span class='formw'><input type='text' maxlength='100' name='email' value='$email' /></span></div>
-<br />
+<span class='formw'><input type='text' maxlength='100' name='email'/></span></div><br />
 
-_END;
-?>
+
 
 <span class='fieldname'>&nbsp;</span>
 <div class='formw'><input type='submit' value='Sign Up' /></div>
