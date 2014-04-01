@@ -1,6 +1,5 @@
 <?php // index.php
 require_once("./include/membersite_config.php");
-$error = $firstName = $lastName = $email ="";
 
 if(isset($_POST['submitted']))
 {
@@ -9,22 +8,6 @@ if(isset($_POST['submitted']))
         $fgmembersite->RedirectToURL("thank-you-interest.html");
    }
 }
-
-
-// if (isset($_POST['user']))
-// {
-// 	$firstName = sanitizeString($_POST['firstName']);
-// 	$lastName = sanitizeString($_POST['lastName']);
-// 	$email = sanitizeString($_POST['email']);
-// 	if ($firstName =="" || $lastName == "" || $email == "")
-// 		$error = "Not all fields were entered<br /><br />";
-// 		else
-// 		{
-// 			queryMysql("INSERT INTO interest VALUES('$firstName', '$lastName', '$email')");
-// 			die("<h4>Thank you for you joining our interest list.</h4>Please check back soon.<br /><br />");
-// 		}
-// 	}
-// if ($loggedin) echo " $user, you are logged in.";
 
 ?>
 
@@ -55,82 +38,80 @@ else
 <img id='logo' alt='The Song Market' src='img/layout/TSMLogo.JPG' />
 </div>
 </header>
+<br />
 
-<br /><span class='main'>
+
+<span class='main'>
   <section id='welcome'>
-	<h1>Welcome to the premier stage for showcasing your ability to predict music success!</h1>
+    <h1>Welcome to the premier stage for showcasing your ability to predict music success!</h1>
     <h1>Do you have what it takes to become a master song trader?</h1>
     <h2>Coming Soon!</h2>
-    </section>
-    <div id='images'>
+  </section>
+  <div id='images'>
     <article id="crowd">
-    	<img alt="crowds" src="img/content/crowd.png" />
-     </article>
-      <article id="arrow">
-        <img  alt="stock arrow" src="img/content/arrow.png" />
-       </article>
-       <article id="trophy">
-         <img  alt="trophy" src="img/content/trophy.png" />
+      <img alt="crowds" src="img/content/crowd.png" />
     </article>
-    </div>
-    <div id='text'>
+    <article id="arrow">
+      <img  alt="stock arrow" src="img/content/arrow.png" />
+    </article>
+    <article id="trophy">
+      <img  alt="trophy" src="img/content/trophy.png" />
+    </article>
+  </div>
+  <div id='text'>
     <section id='crowdinfo' class='textbox'>
     	<p>Compete against your friends by joining or creating a Crowd. </p>
     </section>
     <section id='gameinfo' class='textbox'>
-        <p>Find the next hit songs and then use the simulated currency to buy low and sell high. Profit is the goal!</p>
-        </section>
-        <section id='winninginfo' class='textbox'>
-        <p>Accumulate the highest profit margins to win your Crowd! </p>
+      <p>Find the next hit songs and then use the simulated currency to buy low and sell high. Profit is the goal!</p>
+    </section>
+    <section id='winninginfo' class='textbox'>
+      <p>Accumulate the highest profit margins to win your Crowd! </p>
     </section>
   </div>
+</span>
 
 <center>
-
 <div id='fg_membersite'>
   <form id='interest' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-  <fieldset >
-  <legend>Interest</legend>
+    <fieldset >
+    <legend>Interest</legend>
 
-  <input type='hidden' name='submitted' id='submitted' value='1'/>
+    <input type='hidden' name='submitted' id='submitted' value='1'/>
 
-  <div class='short_explanation'>* required fields</div>
-  <input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
+    <div class='short_explanation'>* required fields</div>
+    <input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
 
-  <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
-  <div class='container'>
-      <label for='name' >Your Full Name*: </label><br/>
-      <input type='text' name='name' id='name' value='<?php echo $fgmembersite->SafeDisplay('name') ?>' maxlength="50" /><br/>
-      <span id='register_name_errorloc' class='error'></span>
-  </div>
-  <div class='container'>
-      <label for='email' >Email Address*:</label><br/>
-      <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
-      <span id='register_email_errorloc' class='error'></span>
-  </div>
+    <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+    <div class='container'>
+        <label for='name' >Your Full Name*: </label><br/>
+        <input type='text' name='name' id='name' value='<?php echo $fgmembersite->SafeDisplay('name') ?>' maxlength="50" /><br/>
+        <span id='register_name_errorloc' class='error'></span>
+    </div>
+    <div class='container'>
+        <label for='email' >Email Address*:</label><br/>
+        <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
+        <span id='register_email_errorloc' class='error'></span>
+    </div>
 
-  <div class='container'>
-      <input type='submit' name='Submit' value='Submit' />
-  </div>
+    <div class='container'>
+        <input type='submit' name='Submit' value='Submit' />
+    </div>
 
-  </fieldset>
+    </fieldset>
   </form>
 </div>
-
 </center>
 <br />
+
 <footer>
   <p>Copyright 2014 by The Song Market</p>
   <p>Contact information: <a href="mailto:thesongmarket@gmail.com">
   thesongmarket@gmail.com</a>.</p>
-</footer> </div>
+</footer>
 
 <script type='text/javascript'>
 // <![CDATA[
-
-    // var pwdwidget = new PasswordWidget('thepwddiv','password');
-    // pwdwidget.MakePWDWidget();
-
     var frmvalidator  = new Validator("interest");
     frmvalidator.EnableOnPageErrorDisplay();
     frmvalidator.EnableMsgsTogether();
@@ -139,8 +120,8 @@ else
     frmvalidator.addValidation("email","req","Please provide your email address");
 
     frmvalidator.addValidation("email","email","Please provide a valid email address");
-
 // ]]>
 </script>
 
-</body></html>
+</body>
+</html>
