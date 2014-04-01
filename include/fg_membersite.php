@@ -49,6 +49,7 @@ class FGMembersite
         $this->pwd  = $pwd;
         $this->database  = $database;
         $this->tablename = $tablename;
+        $this->interest = 'Interest';
 
     }
     function SetAdminEmail($email)
@@ -94,6 +95,35 @@ class FGMembersite
         }
 
         $this->SendAdminIntimationEmail($formvars);
+
+        return true;
+    }
+
+    function RegisterInterest()
+    {
+        if(!isset($_POST['submitted']))
+        {
+           return false;
+        }
+
+        $formvars = array();
+
+        if(!$this->ValidateInterestSubmission())
+        {
+            return false;
+        }
+
+        $this->CollectInterestSubmission($formvars);
+
+        if(!$this->SaveInterestToDatabase($formvars))
+        {
+            return false;
+        }
+
+        if(!$this->SendInterestConfirmationEmail($formvars))
+        {
+            return false;
+        }
 
         return true;
     }
@@ -609,12 +639,48 @@ class FGMembersite
         return true;
     }
 
+    function ValidateInterestSubmission()
+    {
+        //This is a hidden input field. Humans won't fill this field.
+        if(!empty($_POST[$this->GetSpamTrapInputName()]) )
+        {
+            //The proper error is not given intentionally
+            $this->HandleError("Automated submission prevention: case 2 failed");
+            return false;
+        }
+
+        $validator = new FormValidator();
+        $validator->addValidation("name","req","Please fill in Name");
+        $validator->addValidation("email","email","The input for Email should be a valid email value");
+        $validator->addValidation("email","req","Please fill in Email");
+
+
+        if(!$validator->ValidateForm())
+        {
+            $error='';
+            $error_hash = $validator->GetErrors();
+            foreach($error_hash as $inpname => $inp_err)
+            {
+                $error .= $inpname.':'.$inp_err."\n";
+            }
+            $this->HandleError($error);
+            return false;
+        }
+        return true;
+    }
+
     function CollectRegistrationSubmission(&$formvars)
     {
         $formvars['name'] = $this->Sanitize($_POST['name']);
         $formvars['email'] = $this->Sanitize($_POST['email']);
         $formvars['username'] = $this->Sanitize($_POST['username']);
         $formvars['password'] = $this->Sanitize($_POST['password']);
+    }
+
+    function CollectInterestSubmission(&$formvars)
+    {
+        $formvars['name'] = $this->Sanitize($_POST['name']);
+        $formvars['email'] = $this->Sanitize($_POST['email']);
     }
 
     function SendUserConfirmationEmail(&$formvars)
@@ -648,6 +714,33 @@ class FGMembersite
         }
         return true;
     }
+    function SendInterestConfirmationEmail(&$formvars)
+    {
+        $mailer = new PHPMailer();
+
+        $mailer->CharSet = 'utf-8';
+
+        $mailer->AddAddress($formvars['email'],$formvars['name']);
+
+        $mailer->Subject = "Thanks for your Interest with The Song Market!";
+
+        $mailer->From = $this->GetFromAddress();
+
+        $mailer->Body ="Hello ".$formvars['name'].",\r\n\r\n".
+        "Thanks for your interest with ".$this->sitename."\r\n".
+        "We will e-mail you at this address when our Beta is released!.\r\n".
+        "\r\n".
+        "Cheers,\r\n".
+        $this->sitename;
+
+        if(!$mailer->Send())
+        {
+            $this->HandleError("Failed sending interest confirmation email.");
+            return false;
+        }
+        return true;
+    }
+
     function GetAbsoluteURLFolder()
     {
         $scriptFolder = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
@@ -722,10 +815,47 @@ class FGMembersite
         return true;
     }
 
+    function SaveInterestToDatabase(&$formvars)
+    {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }
+        if(!$this->EnsureInteresttable())
+        {
+            return false;
+        }
+        if(!$this->IsInterestFieldUnique($formvars,'email'))
+        {
+            $this->HandleError("This email is already registered");
+            return false;
+        }
+
+        if(!$this->InsertInterestIntoDB($formvars))
+        {
+            $this->HandleError("Inserting to Database failed!");
+            return false;
+        }
+        return true;
+    }
+
     function IsFieldUnique($formvars,$fieldname)
     {
         $field_val = $this->SanitizeForSQL($formvars[$fieldname]);
         $qry = "select username from $this->tablename where $fieldname='".$field_val."'";
+        $result = mysql_query($qry,$this->connection);
+        if($result && mysql_num_rows($result) > 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    function IsInterestFieldUnique($formvars,$fieldname)
+    {
+        $field_val = $this->SanitizeForSQL($formvars[$fieldname]);
+        $qry = "select username from $this->interest where $fieldname='".$field_val."'";
         $result = mysql_query($qry,$this->connection);
         if($result && mysql_num_rows($result) > 0)
         {
@@ -767,6 +897,16 @@ class FGMembersite
         return true;
     }
 
+    function EnsureInteresttable()
+    {
+        $result = mysql_query("SHOW COLUMNS FROM $this->interest");
+        if(!$result || mysql_num_rows($result) <= 0)
+        {
+            return $this->CreateInterestTable();
+        }
+        return true;
+    }
+
     function CreateTable()
     {
         $qry = "Create Table $this->tablename (".
@@ -777,6 +917,22 @@ class FGMembersite
                 "username VARCHAR( 16 ) NOT NULL ,".
                 "password VARCHAR( 32 ) NOT NULL ,".
                 "confirmcode VARCHAR(32) ,".
+                "PRIMARY KEY ( id_user )".
+                ")";
+
+        if(!mysql_query($qry,$this->connection))
+        {
+            $this->HandleDBError("Error creating the table \nquery was\n $qry");
+            return false;
+        }
+        return true;
+    }
+    function CreateInterestTable()
+    {
+        $qry = "Create Table $this->interest (".
+                "id_user INT NOT NULL AUTO_INCREMENT ,".
+                "name VARCHAR( 128 ) NOT NULL ,".
+                "email VARCHAR( 64 ) NOT NULL ,".
                 "PRIMARY KEY ( id_user )".
                 ")";
 
@@ -817,6 +973,26 @@ class FGMembersite
         }
         return true;
     }
+
+    function InsertInterestIntoDB(&$formvars)
+    {
+        $insert_query = 'insert into '.$this->interest.'(
+                name,
+                email
+                )
+                values
+                (
+                "' . $this->SanitizeForSQL($formvars['name']) . '",
+                "' . $this->SanitizeForSQL($formvars['email']) . '"
+                )';
+        if(!mysql_query( $insert_query ,$this->connection))
+        {
+            $this->HandleDBError("Error inserting data to the table\nquery:$insert_query");
+            return false;
+        }
+        return true;
+    }
+
     function MakeConfirmationMd5($email)
     {
         $randno1 = rand();

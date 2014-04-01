@@ -2,20 +2,28 @@
 require_once("./include/membersite_config.php");
 $error = $firstName = $lastName = $email ="";
 
-
-if (isset($_POST['user']))
+if(isset($_POST['submitted']))
 {
-	$firstName = sanitizeString($_POST['firstName']);
-	$lastName = sanitizeString($_POST['lastName']);
-	$email = sanitizeString($_POST['email']);
-	if ($firstName =="" || $lastName == "" || $email == "")
-		$error = "Not all fields were entered<br /><br />";
-		else
-		{
-			queryMysql("INSERT INTO interest VALUES('$firstName', '$lastName', '$email')");
-			die("<h4>Thank you for you joining our interest list.</h4>Please check back soon.<br /><br />");
-		}
-	}
+   if($fgmembersite->RegisterInterest())
+   {
+        $fgmembersite->RedirectToURL("thank-you-interest.html");
+   }
+}
+
+
+// if (isset($_POST['user']))
+// {
+// 	$firstName = sanitizeString($_POST['firstName']);
+// 	$lastName = sanitizeString($_POST['lastName']);
+// 	$email = sanitizeString($_POST['email']);
+// 	if ($firstName =="" || $lastName == "" || $email == "")
+// 		$error = "Not all fields were entered<br /><br />";
+// 		else
+// 		{
+// 			queryMysql("INSERT INTO interest VALUES('$firstName', '$lastName', '$email')");
+// 			die("<h4>Thank you for you joining our interest list.</h4>Please check back soon.<br /><br />");
+// 		}
+// 	}
 // if ($loggedin) echo " $user, you are logged in.";
 
 ?>
@@ -23,6 +31,8 @@ if (isset($_POST['user']))
 <!DOCTYPE html><html><head></script>
 <title>The Song Market - Home</title>
 <link rel='stylesheet' href='css/main2.css' type='text/css' />
+<link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
+<script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
 </head>
 <body>
 
@@ -76,14 +86,42 @@ else
   </div>
 
 
-<div class="form"><center><form method='post' action='interest.php'>
+<!-- <div class="form"><center><form method='post' action='interest.php'>
 <div class="row"><span class='fieldname'>First Name: </span>
 <span class='formw'><input type='text' maxlength='16' name='firstName'/></span></div><br />
 <div class='row'><span class='fieldname'>Last Name: </span>
 <span class='formw'><input type='text' maxlength='16' name='lastName'/></div><br />
 <div class='row'><span class='fieldname'>Email: </span>
-<span class='formw'><input type='text' maxlength='100' name='email'/></span></div><br />
+<span class='formw'><input type='text' maxlength='100' name='email'/></span></div><br /> -->
 
+<div id='fg_membersite'>
+<form id='interest' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+<fieldset >
+<legend>Interest</legend>
+
+<input type='hidden' name='submitted' id='submitted' value='1'/>
+
+<div class='short_explanation'>* required fields</div>
+<input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
+
+<div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+<div class='container'>
+    <label for='name' >Your Full Name*: </label><br/>
+    <input type='text' name='name' id='name' value='<?php echo $fgmembersite->SafeDisplay('name') ?>' maxlength="50" /><br/>
+    <span id='register_name_errorloc' class='error'></span>
+</div>
+<div class='container'>
+    <label for='email' >Email Address*:</label><br/>
+    <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
+    <span id='register_email_errorloc' class='error'></span>
+</div>
+
+<div class='container'>
+    <input type='submit' name='Submit' value='Submit' />
+</div>
+
+</fieldset>
+</form>
 
 
 <span class='fieldname'>&nbsp;</span>
@@ -92,4 +130,24 @@ else
   <p>Copyright 2014 by The Song Market</p>
   <p>Contact information: <a href="mailto:thesongmarket@gmail.com">
   thesongmarket@gmail.com</a>.</p>
-</footer> </div></body></html>
+</footer> </div>
+
+<script type='text/javascript'>
+// <![CDATA[
+
+    // var pwdwidget = new PasswordWidget('thepwddiv','password');
+    // pwdwidget.MakePWDWidget();
+
+    var frmvalidator  = new Validator("interest");
+    frmvalidator.EnableOnPageErrorDisplay();
+    frmvalidator.EnableMsgsTogether();
+    frmvalidator.addValidation("name","req","Please provide your name");
+
+    frmvalidator.addValidation("email","req","Please provide your email address");
+
+    frmvalidator.addValidation("email","email","Please provide a valid email address");
+
+// ]]>
+</script>
+
+</body></html>

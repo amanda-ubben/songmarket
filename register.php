@@ -51,10 +51,10 @@ if(isset($_POST['submitted']))
 </div>
 <div class='container' style='height:80px;'>
     <label for='password' >Password*:</label><br/>
-    <!-- <div class='pwdwidgetdiv' id='thepwddiv' ></div> -->
-    <!-- <noscript> -->
+    <div class='pwdwidgetdiv' id='thepwddiv' ></div>
+    <noscript>
     <input type='password' name='password' id='password' maxlength="50" />
-    <!-- </noscript>     -->
+    </noscript>
     <div id='register_password_errorloc' class='error' style='clear:both'></div>
 </div>
 
@@ -70,8 +70,8 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 <script type='text/javascript'>
 // <![CDATA[
 
-    // var pwdwidget = new PasswordWidget('thepwddiv','password');
-    // pwdwidget.MakePWDWidget();
+    var pwdwidget = new PasswordWidget('thepwddiv','password');
+    pwdwidget.MakePWDWidget();
 
     var frmvalidator  = new Validator("register");
     frmvalidator.EnableOnPageErrorDisplay();
