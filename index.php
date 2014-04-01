@@ -85,48 +85,41 @@ else
     </section>
   </div>
 
-
-<!-- <div class="form"><center><form method='post' action='interest.php'>
-<div class="row"><span class='fieldname'>First Name: </span>
-<span class='formw'><input type='text' maxlength='16' name='firstName'/></span></div><br />
-<div class='row'><span class='fieldname'>Last Name: </span>
-<span class='formw'><input type='text' maxlength='16' name='lastName'/></div><br />
-<div class='row'><span class='fieldname'>Email: </span>
-<span class='formw'><input type='text' maxlength='100' name='email'/></span></div><br /> -->
+<center>
 
 <div id='fg_membersite'>
-<form id='interest' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-<fieldset >
-<legend>Interest</legend>
+  <form id='interest' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+  <fieldset >
+  <legend>Interest</legend>
 
-<input type='hidden' name='submitted' id='submitted' value='1'/>
+  <input type='hidden' name='submitted' id='submitted' value='1'/>
 
-<div class='short_explanation'>* required fields</div>
-<input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
+  <div class='short_explanation'>* required fields</div>
+  <input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
 
-<div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
-<div class='container'>
-    <label for='name' >Your Full Name*: </label><br/>
-    <input type='text' name='name' id='name' value='<?php echo $fgmembersite->SafeDisplay('name') ?>' maxlength="50" /><br/>
-    <span id='register_name_errorloc' class='error'></span>
+  <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+  <div class='container'>
+      <label for='name' >Your Full Name*: </label><br/>
+      <input type='text' name='name' id='name' value='<?php echo $fgmembersite->SafeDisplay('name') ?>' maxlength="50" /><br/>
+      <span id='register_name_errorloc' class='error'></span>
+  </div>
+  <div class='container'>
+      <label for='email' >Email Address*:</label><br/>
+      <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
+      <span id='register_email_errorloc' class='error'></span>
+  </div>
+
+  <div class='container'>
+      <input type='submit' name='Submit' value='Submit' />
+  </div>
+
+  </fieldset>
+  </form>
 </div>
-<div class='container'>
-    <label for='email' >Email Address*:</label><br/>
-    <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
-    <span id='register_email_errorloc' class='error'></span>
-</div>
 
-<div class='container'>
-    <input type='submit' name='Submit' value='Submit' />
-</div>
-
-</fieldset>
-</form>
-
-
-<span class='fieldname'>&nbsp;</span>
-<div class='formw'><input type='submit' value='Sign Up' /></div>
-</form></center></div></div><br /> <footer>
+</center>
+<br />
+<footer>
   <p>Copyright 2014 by The Song Market</p>
   <p>Contact information: <a href="mailto:thesongmarket@gmail.com">
   thesongmarket@gmail.com</a>.</p>
